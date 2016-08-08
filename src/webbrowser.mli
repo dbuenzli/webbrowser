@@ -13,7 +13,7 @@
     be a hopeless endeavour.
 
     In particular the reload strategy mentioned below—useful to
-    edit websites, write API documentation or web application with
+    edit websites, write API documentation or web applications with
     {!Js_of_ocaml}—is an indication of what {e should} be done for
     what is believed to be the best user experience. However do not
     expect this work in all contexts (currently it only fully works
