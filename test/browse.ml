@@ -7,10 +7,22 @@
 let exec = Filename.basename Sys.executable_name
 let log_err f = Format.eprintf ("%s: " ^^ f ^^ "@?") exec
 
+let urify u = (* Detects if u is simply a file path *)
+  try match Sys.file_exists u with
+  | false -> u
+  | true ->
+      let u =
+        if not (Filename.is_relative u) then u else
+        Filename.concat (Sys.getcwd ()) u
+      in
+      Format.sprintf "file://%s" u
+  with Sys_error _ -> u
+
 let browse background prefix browser uris =
   let rec loop = function
   | [] -> 0
   | uri :: uris ->
+      let uri = urify uri in
       match Webbrowser.reload ~background ~prefix ?browser uri with
       | Error (`Msg e) -> log_err "%s" e; 1
       | Ok () -> loop uris
@@ -22,7 +34,9 @@ let browse background prefix browser uris =
 open Cmdliner
 
 let uris =
-  let doc = "URI to open or reload." in
+  let doc = "URI to open or reload. If URI is an existing file path
+             a corresponding file:// URI is opened."
+  in
   Arg.(non_empty & pos_all string [] & info [] ~doc ~docv:"URI")
 
 let doc = "Open and reload URIs in web browsers"
