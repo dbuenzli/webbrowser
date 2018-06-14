@@ -42,7 +42,7 @@ let uris =
 let doc = "Open and reload URIs in web browsers"
 let man =
   [ `S "DESCRIPTION";
-    `P "The $(tname) command opens or reloads URIs specified
+    `P "The $(mname) command opens or reloads URIs specified
         on the command line.";
     `S "BUGS";
     `P "This program is distributed with the OCaml webbrowser library.

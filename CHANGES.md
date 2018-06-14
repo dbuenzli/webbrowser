@@ -1,3 +1,7 @@
+
+- Drop dependency on `rresult`, add dependency on `result`
+  compatibility package.
+
 v0.6.1 2016-09-14 Zagreb
 ------------------------
 

@@ -1,6 +1,6 @@
 description = "Open and reload URIs in web browsers from OCaml"
 version = "%%VERSION_NUM%%"
-requires = "rresult astring bos"
+requires = "result astring bos"
 archive(byte) = "webbrowser.cma"
 archive(native) = "webbrowser.cmxa"
 plugin(byte) = "webbrowser.cma"

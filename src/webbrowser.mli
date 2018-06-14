@@ -28,11 +28,10 @@
 (**  {1 Browser} *)
 
 open Bos
-open Rresult
 
 val reload :
   ?background:bool -> ?prefix:bool -> ?browser:Cmd.t -> string ->
-  (unit, R.msg) result
+  (unit, [`Msg of string]) Result.result
 (** [reload ~background ~prefix ~browser uri] tries to reload or open
     the URI [uri] or an URI prefixed by [uri] if prefix is [true]
     (defaults to [false]) in browser [browser] (if unspecified a

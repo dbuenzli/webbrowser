@@ -5,12 +5,13 @@
   ---------------------------------------------------------------------------*)
 
 open Bos
-open Rresult
 open Astring
 
+let ( >>= ) v f = match v with Ok v -> f v | Error _ as e -> e
+
 let err_no_exec () =
-  R.error_msg "No browser executable specified or found. Help wanted \
-               to expand support, see %%PKG_ISSUES%%/1"
+  Error (`Msg "No browser executable specified or found. Help wanted \
+               to expand support, see %%PKG_ISSUES%%/1")
 
 (* Generic reload via direct command invocation *)
 
@@ -187,13 +188,14 @@ let os () =
   OS.Cmd.(run_out Cmd.(v "uname" % "-s") |> to_string)
 
 let reload ?(background = false) ?(prefix = false) ?browser uri =
-  begin
+  match begin
     os () >>= function
     | "Darwin" -> darwin_reload ~background ~prefix ~browser ~uri
     | "Linux" -> linux_reload ~background ~prefix ~browser ~uri
     | os -> unknown_reload os ~background ~prefix ~browser ~uri
-  end
-  |> R.reword_error_msg (fun msg -> R.msgf "browser reload: %s" msg)
+  end with
+  | Ok _ as v -> v
+  | Error (`Msg m) -> (Error (`Msg (Printf.sprintf "browser reload: %s" m)))
 
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Daniel C. Bünzli
