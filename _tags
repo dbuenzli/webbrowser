@@ -1,5 +1,5 @@
 true : bin_annot, safe_string
-true : package(result), package(astring), package(bos)
+true : package(result), package(bos)
 
 <src> : include
 <src/webbrowser_cli*> : package(cmdliner)

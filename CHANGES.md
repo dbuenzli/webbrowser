@@ -1,7 +1,11 @@
 
-- Drop dependency on `rresult`, add dependency on `result`
-  compatibility package.
-
+- Drop dependency on `astring`, `rresult`
+- Add dependency on `result` compatibility package.
+- `cmdliner` is no longer a depopt. This ensure that
+  depending on `webbrowser` installs the `browse(1)`
+  tool. You can still use the library without depending
+  
+  
 v0.6.1 2016-09-14 Zagreb
 ------------------------
 

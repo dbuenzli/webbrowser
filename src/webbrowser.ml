@@ -5,7 +5,6 @@
   ---------------------------------------------------------------------------*)
 
 open Bos
-open Astring
 
 let ( >>= ) v f = match v with Ok v -> f v | Error _ as e -> e
 
@@ -128,13 +127,16 @@ let darwin_default_browser () =
   in
   run_jxa_script script Cmd.empty OS.Cmd.to_string
 
+let is_path exec = match String.index exec Filename.dir_sep.[0] with
+| exception Not_found -> false | _ -> true
+
 let darwin_browser = function
 | None -> darwin_default_browser () >>= fun id -> Ok (`Appid id)
 | Some browser ->
     match Cmd.line_exec browser with
     | None -> err_no_exec ()
     | Some exec ->
-        match String.Ascii.lowercase exec with
+        match String.lowercase exec with
         | ("firefox" | "org.mozilla.firefox") ->
             Ok (`Appid "org.mozilla.firefox")
         | ("safari" | "com.apple.safari") ->
@@ -143,8 +145,7 @@ let darwin_browser = function
             Ok (`Appid "com.google.chrome")
         | ("opera" | "com.operasoftware.opera") ->
             Ok (`Appid "com.operasoftware.opera")
-        | exec when Cmd.line_args browser = [] &&
-                    not (String.is_infix ~affix:Fpath.dir_sep exec) ->
+        | exec when Cmd.line_args browser = [] && not (is_path exec) ->
             Ok (`App exec)
         | _ ->
             Ok (`Cmd browser)
