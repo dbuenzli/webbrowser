@@ -5,7 +5,7 @@
   ---------------------------------------------------------------------------*)
 
 let exec = Filename.basename Sys.executable_name
-let log_err f = Format.eprintf ("%s: " ^^ f ^^ "@?") exec
+let log_err f = Format.eprintf ("%s: " ^^ f ^^ "@.") exec
 
 let urify u = (* Detects if u is simply a file path *)
   try match Sys.file_exists u with
@@ -39,26 +39,25 @@ let uris =
   in
   Arg.(non_empty & pos_all string [] & info [] ~doc ~docv:"URI")
 
-let doc = "Open and reload URIs in web browsers"
-let man =
-  [ `S "DESCRIPTION";
+let cmd =
+  let doc = "Open and reload URIs in web browsers" in
+  let man = [
+    `S Manpage.s_description;
     `P "The $(mname) command opens or reloads URIs specified
         on the command line.";
-    `S "BUGS";
+    `S Manpage.s_bugs;
     `P "This program is distributed with the OCaml webbrowser library.
         See $(i,%%PKG_HOMEPAGE%%) for contact information."; ]
-
-let cmd =
-  let info = Term.info "browse" ~doc ~man in
-  let t = Term.(const browse $ Webbrowser_cli.background $
-                Webbrowser_cli.prefix $ Webbrowser_cli.browser $ uris)
   in
-  (t, info)
+  let exits =
+    Term.exit_info 1 ~doc:"if the URI failed to load in some way" ::
+    Term.default_exits
+  in
+  Term.(const browse $ Webbrowser_cli.background $ Webbrowser_cli.prefix $
+        Webbrowser_cli.browser $ uris),
+  Term.info "browse" ~doc ~man ~exits
 
-let () = match Term.eval cmd with
-| `Error _ -> exit 1
-| `Ok v -> exit v
-| _ -> exit 0
+let () = Term.(exit_status @@ eval cmd)
 
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Daniel C. Bünzli
