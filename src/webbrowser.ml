@@ -136,7 +136,7 @@ let darwin_browser = function
     match Cmd.line_exec browser with
     | None -> err_no_exec ()
     | Some exec ->
-        match String.lowercase exec with
+        match String.lowercase_ascii exec with
         | ("firefox" | "org.mozilla.firefox") ->
             Ok (`Appid "org.mozilla.firefox")
         | ("safari" | "com.apple.safari") ->

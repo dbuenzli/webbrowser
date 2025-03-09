@@ -50,14 +50,15 @@ let cmd =
         See $(i,%%PKG_HOMEPAGE%%) for contact information."; ]
   in
   let exits =
-    Term.exit_info 1 ~doc:"if the URI failed to load in some way" ::
-    Term.default_exits
+    Cmd.Exit.info 1 ~doc:"if the URI failed to load in some way" ::
+    Cmd.Exit.defaults
   in
+  Cmd.v (Cmd.info "browse" ~doc ~man ~exits) @@
   Term.(const browse $ Webbrowser_cli.background $ Webbrowser_cli.prefix $
-        Webbrowser_cli.browser $ uris),
-  Term.info "browse" ~doc ~man ~exits
+        Webbrowser_cli.browser $ uris)
 
-let () = Term.(exit_status @@ eval cmd)
+let main () = Cmd.eval' cmd
+let () = if !Sys.interactive then () else exit (main ())
 
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Daniel C. Bünzli

@@ -9,17 +9,14 @@ open Rresult
 open Bos
 
 let browser =
-  let env = Arg.env_var "BROWSER" in
+  let env = Cmdliner.Cmd.Env.info "BROWSER" in
   let browser =
-    let parse s = match OS.Env.cmd s with
-    | Error (`Msg e) -> `Error e
-    | Ok cmd -> `Ok (Some cmd)
-    in
+    let parse s = Result.map Option.some (OS.Env.cmd s) in
     let pp ppf = function
     | None -> Format.fprintf ppf "OS specific fallback"
     | Some cmd -> Cmd.pp ppf cmd
     in
-    parse, pp
+    Arg.conv (parse, pp)
   in
   let doc =
     "The WWW browser command $(docv) to use. The value may be interpreted
