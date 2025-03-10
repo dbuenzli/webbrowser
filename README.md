@@ -1,6 +1,5 @@
 webbrowser — Open and reload URIs in browsers from OCaml
 -------------------------------------------------------------------------------
-%%VERSION%%
 
 Webbrowser is a library to open and reload URIs in web browsers from
 OCaml.
