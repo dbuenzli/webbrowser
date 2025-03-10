@@ -1,4 +1,4 @@
-PKG bytes bos cmdliner
-S src
-S test
-B _build/**
+PKG b0.kit bos cmdliner
+S src/**
+S test/**
+B _b0/b/**

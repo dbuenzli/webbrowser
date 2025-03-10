@@ -1,0 +1,20 @@
+{0 Webbrowser {%html: <span class="version">%%VERSION%%</span>%}}
+
+{b Warning.} This library is maintained but no longer developed.
+Similar functionality can be found in the libraries of
+{{:https://erratique.ch/software/b0}[b0]} (and its [show-url] tool).
+
+Webbrowser is a library to open and reload URIs in web browsers from
+OCaml.
+
+{1:library_webbrowser Library [webbrowser]}
+
+{!modules:
+Webbrowser
+}
+
+{1:library_webbrowser.cli Library [webbrowser.cli]}
+
+{!modules:
+Webbrowser_cli
+}

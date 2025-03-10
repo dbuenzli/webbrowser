@@ -6,5 +6,6 @@ open Topkg
 let () =
   Pkg.describe "webbrowser" @@ fun c ->
   Ok [ Pkg.mllib "src/webbrowser.mllib";
-       Pkg.mllib "src/webbrowser_cli.mllib";
-       Pkg.bin "test/browse"; ]
+       Pkg.mllib "src/cli/webbrowser_cli.mllib" ~dst_dir:"cli";
+       Pkg.bin "test/browse";
+       Pkg.doc "doc/index.mld" ~dst:"odoc-pages/index.mld"; ]

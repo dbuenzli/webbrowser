@@ -13,16 +13,14 @@
 
     In particular the reload strategy mentioned below—useful to
     edit websites, write API documentation or web applications with
-    {!Js_of_ocaml}—is an indication of what {e should} be done for
+    [js_of_ocaml] is an indication of what {e should} be done for
     what is believed to be the best user experience. However do not
     expect this work in all contexts (currently it only fully works
     with Chrome on Darwin and it is not even glitchless there).
 
     If you know how to improve or extend the support for particular
     browsers and platforms get in touch
-    {{:https://github.com/dbuenzli/webbrowser/issues/1}here}.
-
-    {e %%VERSION%% — {{:%%PKG_HOMEPAGE%% }homepage}} *)
+    {{:https://github.com/dbuenzli/webbrowser/issues/1}here}. *)
 
 (**  {1 Browser} *)
 
@@ -30,7 +28,7 @@ open Bos
 
 val reload :
   ?background:bool -> ?prefix:bool -> ?browser:Cmd.t -> string ->
-  (unit, [`Msg of string]) Result.result
+  (unit, [`Msg of string]) result
 (** [reload ~background ~prefix ~browser uri] tries to reload or open
     the URI [uri] or an URI prefixed by [uri] if prefix is [true]
     (defaults to [false]) in browser [browser] (if unspecified a

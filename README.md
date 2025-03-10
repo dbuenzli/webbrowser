@@ -1,19 +1,23 @@
 webbrowser — Open and reload URIs in browsers from OCaml
--------------------------------------------------------------------------------
+========================================================
+
+*Warning* This library is maintained but no longer developed.  Similar
+functionality can be found in the libraries of [`b0`] (and its
+`show-url` tool).
 
 Webbrowser is a library to open and reload URIs in web browsers from
 OCaml.
 
-Webbrowser depends on [bos][bos]. The optional command line support
-provided by the Webbrowser_cli library depends on [cmdliner][cmdliner].
+Webbrowser depends on [bos][bos]. The command line support provided by
+the Webbrowser_cli library depends on [cmdliner][cmdliner].
 
 Webbrowser is distributed under the ISC license. 
 
 [bos]: http://erratique.ch/software/bos
 [cmdliner]: http://erratique.ch/software/cmdliner
+[b0]: http://erratique.ch/software/b0
 
-Homepage: http://erratique.ch/software/webbrowser  
-Contact: Daniel Bünzli `<daniel.buenzl i@erratique.ch>`
+Homepage: <http://erratique.ch/software/webbrowser>
 
 ## Installation
 

@@ -4,7 +4,6 @@
   ---------------------------------------------------------------------------*)
 
 open Cmdliner
-open Rresult
 open Bos
 
 let browser =

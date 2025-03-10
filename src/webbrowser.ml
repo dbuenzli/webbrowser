@@ -23,7 +23,7 @@ let run_jxa_script script args out =
   OS.Cmd.must_exist c >>= fun c -> OS.Cmd.(in_string script |> run_io c |> out)
 
 let pp_using_jxa ppf browser =
-  Fmt.pf ppf "@[JavaScript@ for@ Automation@ with %S@]" browser
+  Format.fprintf ppf "@[JavaScript@ for@ Automation@ with %S@]" browser
 
 let darwin_jxa_reload ~background ~prefix ~appid ~uri =
   let script =
