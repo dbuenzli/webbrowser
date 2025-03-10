@@ -1,7 +1,7 @@
 webbrowser — Open and reload URIs in browsers from OCaml
 ========================================================
 
-*Warning* This library is maintained but no longer developed.  Similar
+**Warning** This library is maintained but no longer developed.  Similar
 functionality can be found in the libraries of [`b0`] (and its
 `show-url` tool).
 
