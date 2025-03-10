@@ -23,9 +23,9 @@ maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
 authors: "The webbrowser programmers"
 license: "ISC"
 tags: ["web" "http" "url" "browser" "cli" "org:erratique"]
-homepage: "https://erratique.ch/software/webbbrowser"
-doc: "https://erratique.ch/software/webbbrowser/doc/"
-bug-reports: "https://github.com/dbuenzli/webbbrowser/issues"
+homepage: "https://erratique.ch/software/webbrowser"
+doc: "https://erratique.ch/software/webbrowser/doc/"
+bug-reports: "https://github.com/dbuenzli/webbrowser/issues"
 depends: [
   "ocaml" {>= "4.08.0"}
   "ocamlfind" {build}
@@ -36,5 +36,5 @@ depends: [
   "topkg" {build & >= "1.0.3"}
 ]
 build: ["ocaml" "pkg/pkg.ml" "build" "--dev-pkg" "%{dev}%"]
-dev-repo: "git+https://erratique.ch/repos/webbbrowser.git"
+dev-repo: "git+https://erratique.ch/repos/webbrowser.git"
 x-maintenance-intent: ["(latest)"]

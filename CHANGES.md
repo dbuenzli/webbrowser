@@ -1,3 +1,5 @@
+v0.6.2 2025-03-10
+-----------------
 
 *Warning* This library is maintained but no longer developed.  Similar
 functionality can be found in the libraries of [`b0`] (and its
@@ -6,10 +8,10 @@ functionality can be found in the libraries of [`b0`] (and its
 - Require OCaml >= 4.08.
 - Install libraries in their own directories.
 - Handle `cmdliner` deprecations.
-- Drop direct dependency on `astring`, `rresult`
+- Drop direct dependency on `astring`
 - `cmdliner` is no longer a depopt. This ensure that depending on
   `webbrowser` installs the `browse(1)` tool. You can still use the
-  library without depending on it
+  library without depending on it.
   
 v0.6.1 2016-09-14 Zagreb
 ------------------------
