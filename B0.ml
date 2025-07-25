@@ -48,7 +48,7 @@ let default =
         "bos", {|>= "0.2.1"|};
         "rresult", {|>= "0.7.0"|};
         "cmdliner", {|>= "1.3.0"|};
-        "topkg", {|build & >= "1.0.3"|};
+        "topkg", {|build & >= "1.1.0"|};
       ]
     |> ~~ B0_opam.build
       {|[["ocaml" "pkg/pkg.ml" "build" "--dev-pkg" "%{dev}%"]]|}
